@@ -38,7 +38,11 @@ class Query(graphene.AbstractType):
     message = graphene.Field(MessageType, id=graphene.ID())
 
     def resolve_all_messages(self, args, context, info):
-        return models.Message.objects.all()
+        orderBy = args.get("orderBy", None)
+        if orderBy:
+            return User.objects.order_by(*orderBy)
+        else:
+            return models.Message.objects.all()
 
     def resolve_message(self, args, context, info):
         from graphql_relay.node.node import from_global_id

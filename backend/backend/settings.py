@@ -25,7 +25,7 @@ SECRET_KEY = 'df7e9_bxxi451=+n$@u(7j#fi2)xmr2r-kzmjc*v&0*#*uq=3i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_filters',
     'simple_app',
     'corsheaders',
+    'bootstrap4',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -65,7 +66,9 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            '/home/kiril/python/django/react-apollo-graphql-demo/backend/templates/simple_app'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
