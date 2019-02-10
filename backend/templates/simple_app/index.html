@@ -1,0 +1,105 @@
+{% extends 'bootstrap4.html' %}
+{% load bootstrap4 %}
+{% block bootstrap4_content %}
+<!--
+<div class="container my-5">
+  <div class="row d-flex justify-content-center">
+
+    <h2><a href="sarinform/">Саринформ</a></h2>
+    <h2><a href="sarbc/">Sarbc</a></h2>
+    <h2><a href=""></a></h2>
+    <h2><a href=""></a></h2>
+
+  </div>
+</div> -->
+
+<div id="avto" class="container mt-5">
+	<div class="row">
+		<div class="col-sm-6">
+        <span class="text-success mx-2 my-2">Обновление каждую минуту</span>
+				<!-- <div class="row mx-auto d-flex justify-content-center sarinform">
+						<h2><a target="_blank" class="text-danger" href="//vzsar.ru">Vzsar</a></h2>
+					    {% for key, value in context_vzsar.items %}
+					      <a class="href" id="" target="_blank" href="//www.vzsar.ru{{ value }}">{{ key }} <span class="circle">....</span></a>
+					    {% endfor %}
+				</div>
+
+				<div class="row mx-auto d-flex justify-content-center">
+					<h2><a target="_blank" class="text-danger" href="//sarbc.ru">Sarbc</a></h2>
+					{% for key, value in context_sarbc.items %}
+						<a class="href" id="0" target="_blank" href="//sarbc.ru{{ value }}">{{ key }} <span class="circle">....</span></a>
+					{% endfor %}
+				</div>
+
+				<div class="row mx-auto d-flex justify-content-center">
+						<h2><a target="_blank" class="text-danger" href="//saratov24.tv">Saratov24</a></h2>
+						{% for key, value in context_sar24.items %}
+							<a class="href" id="0" target="_blank" href="//saratov24.tv{{ value }}">{{ key }} <span class="circle">....</span></a>
+						{% endfor %}
+				</div> -->
+
+				<div class="row mx-auto d-flex justify-content-center">
+					<h2><a target="_blank" class="text-danger" href="//nversia.ru">Nversia</a></h2>
+						{% for key, value in context_nvrs.items %}
+							<a class="href" id="0" target="_blank" href="//nversia.ru{{ value }}">{{ key }} <span class="circle">....</span></a>
+						{% endfor %}
+				</div>
+
+				<!-- <div class="row mx-auto d-flex justify-content-center">
+					<h2><a target="_blank" class="text-danger" href="//fn-volga.ru">fn_volga</a></h2>
+						{% for key, value in context_fn.items %}
+							<a class="href" id="0" target="_blank" href="//fn-volga.ru{{ value }}">{{ key }} <span class="circle">....</span></a>
+						{% endfor %}
+				</div> -->
+
+		</div>
+
+		<!-- <div class="col-sm-6">
+
+				<div class="row mx-auto d-flex justify-content-center">
+						<h2><a target="_blank" class="text-danger" href="//www.4vsar.ru/">Четвертая власть</a></h2>
+					    {% for key, value in context_vlast.items %}
+					      <a class="href" target="_blank" href="//www.4vsar.ru{{ value }}">{{ key }} <span class="circle">....</span></a>
+					    {% endfor %}
+				</div>
+
+				<div class="row mx-auto d-flex justify-content-center">
+						<h2><a target="_blank" class="text-danger" href="//www.saratovnews.ru/">СаратовNews</a></h2>
+							{% for key, value in context_sarnews.items %}
+								<a class="href" target="_blank" href="//www.saratovnews.ru{{ value }}">{{ key }} <span class="circle">....</span></a>
+							{% endfor %}
+				</div>
+
+				<div class="row mx-auto d-flex justify-content-center">
+						<h2><a target="_blank" class="text-danger" href="//om-saratov.ru/">Общественное Мнение</a></h2>
+							{% for key, value in context_ob_m.items %}
+								<a class="href" target="_blank" href="//om-saratov.ru{{ value }}">{{ key }} <span class="circle">....</span></a>
+							{% endfor %}
+				</div>
+
+				<div class="row mx-auto d-flex justify-content-center">
+						<h2><a target="_blank" class="text-danger" href="//sarnovosti.ru/">64 Регион</a></h2>
+							{% for key, value in context_reg.items %}
+								<a class="href" target="_blank" href="//sarnovosti.ru{{ value }}">{{ key }} <span class="circle">....</span></a>
+							{% endfor %}
+				</div>
+
+		</div> -->
+
+	</div>
+
+</div>
+ <style>
+     .circle{
+  color: green;
+  background-color:green;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+}
+ </style>
+
+<div class="container mt-5">
+</div>
+
+{% endblock %}
