@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { gql, graphql } from 'react-apollo'
 
+
 const query = gql`{
   allMessages {
     edges {
@@ -12,6 +13,7 @@ const query = gql`{
     }
   }
 }`
+
 
 class HomeView extends React.Component {
   render() {
