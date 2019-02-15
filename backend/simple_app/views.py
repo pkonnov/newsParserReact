@@ -16,6 +16,7 @@ from bs4 import BeautifulSoup
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 
+from simple_app.models import Message
 
 headers={'User-Agent': 'Mozilla/5.0'}
 

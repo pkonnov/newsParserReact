@@ -8,5 +8,14 @@ class Message(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     message = models.TextField()
 
-    def __unicode__(self):
-        return u'{}'.format(self.message)
+    def __str__(self):
+        return self.message
+
+
+class NewsUrls(models.Model):
+    title = models.CharField(max_length=500)
+    url = models.CharField(max_length=500)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
