@@ -13,6 +13,7 @@ class Message(models.Model):
 
 
 class NewsUrls(models.Model):
+    site_url = models.CharField(max_length=50)
     title = models.CharField(max_length=500)
     url = models.CharField(max_length=500)
     created_at = models.DateTimeField(auto_now_add=True)
