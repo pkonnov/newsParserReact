@@ -1,7 +1,7 @@
 import React from 'react'
 // import { Link } from 'react-router-dom'
 import { gql, graphql } from 'react-apollo'
-import './ListNewsUrlView.css'
+import classes from './ListNewsUrlView.css'
 
 
 const query = gql`{
@@ -30,9 +30,9 @@ class ListNewsUrlView extends React.Component {
           <div className="row d-flex">
             {data.allNewsUrls.edges.map((item, index) => (
               <div key={item.node.id} className="col-md-6 offset-md-3">
-                <h3 className="Title">{item.node.title}</h3>
-                <h5 className="SiteUrl">{item.node.siteUrl}</h5>
-                <a href={item.node.siteUrl + item.node.url} rel="noopener noreferrer" target="_blank">Подробнее</a>
+                <h3 className={classes.Title}>{item.node.title}</h3>
+                <h5 className={classes.SiteUrl}>{item.node.siteUrl}</h5>
+                <a className={classes.MoreButton} href={item.node.siteUrl + item.node.url} rel="noopener noreferrer" target="_blank">Подробнее</a>
               </div>
             ))}
           </div>

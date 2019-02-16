@@ -16,7 +16,7 @@ conn = sqlite3.connect('./db.sqlite3', check_same_thread=False)
 
 def nversia_parser():
     '''get parse title url'''
-
+    url = 'https://nversia.ru'
     nvrs_url = 'https://nversia.ru/news/index/'
     nvrs = urllib.request.urlopen(nvrs_url)
     nvrs_read = lxml.html.fromstring(nvrs.read())
@@ -37,7 +37,7 @@ def nversia_parser():
 
     if oldtitle.fetchone() == None:
         c.execute(
-            f"INSERT INTO simple_app_newsurls VALUES ('{idgen}', '{title_nvrs[0]}', '{url_nvrs[0]}','{date_now}', {nvrs_url[:18]})")
+            f"INSERT INTO simple_app_newsurls VALUES ('{idgen}', '{title_nvrs[0]}', '{url_nvrs[0]}','{date_now}', '{url}')")
     else:
         print('none')
 
