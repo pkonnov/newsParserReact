@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import HomeView from './views/HomeView'
 import CreateView from './views/CreateView'
 import DetailView from './views/DetailView'
-import ListNewsUrlView from './views/ListNewsUrlView'
+import ListNewsUrlView from './views/ListNewsUrlView/ListNewsUrlView'
 
 const networkInterface = createBatchingNetworkInterface({
   uri: 'http://0.0.0.0:8000/gql/',
@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <Router>
-          <div>
+          <div className="bootstrap-wrapper">
             <Route exact path="/" component={HomeView} />
             <Route exact path="/news" component={ListNewsUrlView} />
             <Switch>
