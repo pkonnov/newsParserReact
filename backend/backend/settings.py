@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'simple_app',
     'corsheaders',
     'bootstrap4',
+    'channels',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -67,7 +68,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            '/home/kiril/python/django/react-apollo-graphql-demo/backend/templates/simple_app'
+            '/home/kiril/python/django/react-apollo-graphql-demo/backend/templates/simple_app',
+            os.path.join(BASE_DIR, 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -132,3 +134,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+CHANNEL_LAYERS = {
+ "default": {
+ "BACKEND": "asgiref.inmemory.ChannelLayer",
+ "ROUTING": "channels_obstruction.routing.channel_routing",
+ },
+}
