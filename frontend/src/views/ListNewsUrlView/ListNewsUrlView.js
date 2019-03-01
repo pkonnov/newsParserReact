@@ -20,23 +20,29 @@ const query = gql`{
 
 class ListNewsUrlView extends React.Component {
 
-  // getDataQuery(){
-  //   const data = this.props
-  //   const url = data.data.allNewsUrls.edges[0].node.url
-  //   var changedUrl = setTimeout(function t(){
-  //     return url
-  //     changedUrl = setTimeout(t,5000)
+
+  constructor(props){
+    super(props)
+    this.state = {
+      data: [],
+    }
+  }
+
+  // componentDidMount(){
+  //   let timerLocation = setTimeout(() => {
+  //     if(window.innerWidth < 500){
+  //       document.location.href = "http://127.0.0.1:3000/test/"
+  //     }
+  //     timerLocation = setTimeout(timerLocation, 5000)
   //   }, 5000)
   // }
 
-
   render(){
+
     let { data } = this.props
     if (data.loading){
       return <div>loading...</div>
     }
-
-    let socket = new WebSocket('ws://0.0.0.0:8000/')
 
     const parserNews = data.allNewsUrls.edges.map((item, index) => (
       <div key={item.node.id} className="col-md-6 offset-md-3">
@@ -45,23 +51,21 @@ class ListNewsUrlView extends React.Component {
         <a className={classes.MoreButton} href={item.node.siteUrl + item.node.url} rel="noopener noreferrer" target="_blank">Подробнее</a>
       </div>
     ))
-
     return(
         <div className="container">
           <div className="row d-flex">
             {parserNews}
-            {this.socket}
           </div>
         </div>
     )
   }
 }
 
-// ListNewsUrlView = graphql(query,{
-//  options:{pollInterval: 5000},
-// })(ListNewsUrlView)
+ListNewsUrlView = graphql(query,{
+ options:{pollInterval: 60000},
+})(ListNewsUrlView)
 
 
-ListNewsUrlView = graphql(query)(ListNewsUrlView)
+// ListNewsUrlView = graphql(query)(ListNewsUrlView)
 
 export default ListNewsUrlView

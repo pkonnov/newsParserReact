@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +43,6 @@ INSTALLED_APPS = [
     'simple_app',
     'corsheaders',
     'bootstrap4',
-    'channels',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -63,6 +63,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'backend.urls'
+# WSGI_APPLICATION = 'backend.wsgi'
+ASGI_APPLICATION = 'backend.routing.application'
 
 TEMPLATES = [
     {
@@ -83,7 +85,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'backend.wsgi.application'
 
 
 # Database
@@ -121,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Samara'
 
 USE_I18N = True
 
@@ -136,9 +137,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-CHANNEL_LAYERS = {
- "default": {
- "BACKEND": "asgiref.inmemory.ChannelLayer",
- "ROUTING": "channels_obstruction.routing.channel_routing",
- },
-}
+# CHANNEL_LAYERS = {
+#  "default": {
+#  "BACKEND": "asgiref.inmemory.ChannelLayer",
+#  "ROUTING": "backend.routing.channel_routing",
+#  },
+# }
