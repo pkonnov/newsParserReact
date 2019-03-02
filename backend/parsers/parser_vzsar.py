@@ -20,7 +20,7 @@ def vzsar_parser():
     # hash_md = hashlib.md5(f'{title_nvrs}'.encode('utf-8')).hexdigest()
     idgen = random.randint(1, 11111111111111111111)
 
-    d = datetime.strftime(datetime.now(), "%a, %d %b %Y %H:%M:%S")
+    d = datetime.strftime(datetime.now(), "%d %b %Y %H:%M:%S")
     date_now = parser.parse(d).isoformat()
 
     c = conn.cursor()
