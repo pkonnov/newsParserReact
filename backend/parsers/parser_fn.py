@@ -10,7 +10,7 @@ def fn_parser():
     fn_read = urlopen(fn).read()
     fn_soup = BeautifulSoup(fn_read, 'lxml')
     title_fn = fn_soup.find_all('div', class_='inf')[1:2]
-    url_fn = fn_soup.find_all('a', class_='title')[1:2]
+    url_fn = fn_soup.find_all('a', class_='title')[2:3]
     free_title = [title.find('a').getText()[1:] for title in title_fn]
     free_url = [url.get('href') for url in url_fn]
 

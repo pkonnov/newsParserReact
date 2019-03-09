@@ -7,14 +7,11 @@ import {
 import {SubscriptionClient} from 'subscriptions-transport-ws'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import HomeView from './views/HomeView'
-import CreateView from './views/CreateView'
-import DetailView from './views/DetailView'
 import SearchBar from './SearchBar'
 import ListNewsUrlView from './views/ListNewsUrlView/ListNewsUrlView'
 
 const networkInterface = createBatchingNetworkInterface({
-  uri: 'http://0.0.0.0:8000/gql/',
+  uri: 'http://localhost:8000/gql/',
   batchInterval: 10,
   opts: {
     credentials: 'same-origin',
@@ -42,10 +39,7 @@ class App extends Component {
         <Router>
           <div className="bootstrap-wrapper">
             <Route exact path="/" component={ListNewsUrlView} />
-            <Route exact path="/news" component={ListNewsUrlView} />
             <Switch>
-              <Route exact path="/messages/create/" component={CreateView} />
-              <Route exact path="/messages/:id/" component={DetailView} />
               <Route exact path="/test" component={SearchBar} />
             </Switch>
           </div>

@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,9 +61,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+WSGI_APPLICATION = 'backend.wsgi.application'
 ROOT_URLCONF = 'backend.urls'
-# WSGI_APPLICATION = 'backend.wsgi'
-ASGI_APPLICATION = 'backend.routing.application'
 
 TEMPLATES = [
     {

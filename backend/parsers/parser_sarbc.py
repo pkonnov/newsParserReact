@@ -5,8 +5,8 @@ from parser_requirements import *
 
 def sarbc_parser():
     '''get parse title url'''
-    url = 'https://news.sarbs.ru'
-    sarbc = urllib.request.urlopen('https://news.sarbc.ru/')
+    url = 'http://news.sarbc.ru'
+    sarbc = urllib.request.urlopen('http://news.sarbc.ru/')
     sarbc_read = lxml.html.fromstring(sarbc.read())
     title_sarbc = sarbc_read.xpath('//div[@class="item-title"]/a/text()')[:1]
     url_sarbc = sarbc_read.xpath('//div[@class="item-title"]/a/@href')[:1]
@@ -25,7 +25,7 @@ def sarbc_parser():
 
     if oldtitle.fetchone() == None:
         c.execute(
-            f"INSERT INTO simple_app_newsurls VALUES ('{idgen}', '{title_sarbc[0]}', '{url_sarbc[0]}','{date_now}', '{url}')")
+            f"INSERT INTO simple_app_newsurls VALUES ('{idgen}', '{title_sarbc[0]}', '/main{url_sarbc[0][20:]}','{date_now}', '{url}')")
     else:
         print('none')
 
