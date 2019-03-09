@@ -49,22 +49,21 @@ class ListNewsUrlView extends React.Component {
   render(){
 
     let { data } = this.props
-    if (this.props.loading){
-      return <div>loading...</div>
-    }
+    if (this.props.loading) return <div>loading...</div>;
 
-    // const parserNews = data.allNewsUrls.edges.map((item, index) => (
-    //   <div key={item.node.id} className="col-md-6 offset-md-3">
-    //     <h3 className={classes.Title}>{item.node.title}</h3>
-    //     <h5 className={classes.SiteUrl}>{item.node.siteUrl}</h5>
-    //     <a className={classes.MoreButton} href={item.node.siteUrl + item.node.url}
-    //       rel="noopener noreferrer" target="_blank">Подробнее</a>
-    //   </div>
-    // ))
+    const parserNews = this.props.allNewsUrls.edges.map((item, index) => (
+      <div key={item.node.id} className="col-md-6 offset-md-3">
+        <h3 className={classes.Title}>{item.node.title}</h3>
+        <h5 className={classes.SiteUrl}>{item.node.siteUrl}</h5>
+        <a className={classes.MoreButton} href={item.node.siteUrl + item.node.url}
+          rel="noopener noreferrer" target="_blank">Подробнее</a>
+      </div>
+    ))
 
     return(
           <div className="container">
             <div className="row d-flex">
+              {parserNews}
               {console.log(this.props)}
             </div>
           </div>
@@ -72,8 +71,8 @@ class ListNewsUrlView extends React.Component {
   }
 }
 
-const MoreNewsUrls = gql`query AllNewsUrls($cursor:String!){
-  allNewsUrls(cursor:$cursor){
+const MoreNewsUrls = gql`query AllNewsUrls($cursor: String){
+  allNewsUrls(first:10, after:$cursor){
     edges{
       cursor
       node {
@@ -93,27 +92,32 @@ const MoreNewsUrls = gql`query AllNewsUrls($cursor:String!){
   }
 }`
 
-
-ListNewsUrlView = graphql(query,
-{options:
-  {pollInterval: 60000},
-  props({ data: {cursor, allNewsUrls, loading, fetchMore} }) {
-    return {
-      loadMoreEntries: () => {
-        return fetchMore({
-          query: MoreNewsUrls,
-          variables:{cursor:cursor},
-          updateQuery: (previousResult, { fetchMoreResult }) => {
-            console.log(previousResult);
-            console.log(fetchMoreResult);
-          },
-        });
-      },
-    };
-  }
+ListNewsUrlView = graphql(MoreNewsUrls, {
+  props: ({data: {loading, allNewsUrls, after, fetchMore}}) => ({
+    loading,
+    allNewsUrls,
+    loadMoreEntries(){
+      return fetchMore({
+        query: MoreNewsUrls,
+        variables: {
+          cursor: allNewsUrls.pageInfo.endCursor,
+        },
+        updateQuery: (previousResult, {fetchMoreResult}) => {
+          const newEdges = fetchMoreResult.allNewsUrls.edges;
+          const pageInfo = fetchMoreResult.allNewsUrls.pageInfo;
+          return newEdges.length
+            ? {
+              allNewsUrls: {
+                __typename: previousResult.allNewsUrls.__typename,
+                edges: [...previousResult.allNewsUrls.edges, ...newEdges],
+                pageInfo
+              }
+            }
+            : previousResult
+        }
+      })
+    }
+  })
 })(ListNewsUrlView)
-
-
-// ListNewsUrlView = graphql(query)(ListNewsUrlView)
 
 export default ListNewsUrlView
