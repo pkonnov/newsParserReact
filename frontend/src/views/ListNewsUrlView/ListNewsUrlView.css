@@ -1,3 +1,6 @@
+.NewsFeed {
+
+}
 .Title {
   margin-bottom: 5px;
 }
@@ -14,4 +17,14 @@
   color: #fdfdfd;
   background-color: #414142;
   padding: 5px;
+}
+.NewsButtonContainer{
+  text-align: center;
+  display: block;
+  margin: 10px;
+}
+.ButtonPagination{
+  display: block;
+  margin:auto;
+  font-size: 20px;
 }

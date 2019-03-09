@@ -27,23 +27,8 @@ const query = gql`{
 
 class ListNewsUrlView extends React.Component {
 
-  componentDidMount(){
-    window.addEventListener("scroll", this.handleOnScroll)
-  }
-
-  handleOnScroll = () => {
-    let scrollTop =
-      (document.documentElement && document.documentElement.scrollTop) ||
-      document.body.scrollTop;
-    let scrollHeight =
-      (document.documentElement && document.documentElement.scrollHeight) ||
-      document.body.scrollHeight;
-    let clientHeight =
-      document.documentElement.clientHeight || window.innerHeight;
-    let scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
-    if (scrolledToBottom) {
-      this.props.loadMoreEntries();
-    }
+  handleOnButtonPagination = () => {
+    return this.props.loadMoreEntries();
   }
 
   render(){
@@ -60,10 +45,17 @@ class ListNewsUrlView extends React.Component {
       </div>
     ))
 
+    const buttonPagination = (
+      <button className={classes.ButtonPagination} onClick={this.handleOnButtonPagination}>Что там еще</button>
+    )
+
     return(
           <div className="container">
-            <div className="row d-flex">
+            <div className={"row d-flex " + classes.NewsFeed}>
               {parserNews}
+              <div className={"col-md-6 offset-md-3 " + classes.NewsButtonContainer}>
+                {buttonPagination}
+              </div>
               {console.log(this.props)}
             </div>
           </div>
